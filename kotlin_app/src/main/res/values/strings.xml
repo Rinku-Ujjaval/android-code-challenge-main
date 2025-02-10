@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Mobile Coding Challenge</string>
+    <string name="title_activity_user_post_list">UserPostListActivity</string>
+</resources>

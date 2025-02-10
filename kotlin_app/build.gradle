@@ -1,0 +1,119 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+android {
+    namespace "life.league.challenge.kotlin"
+
+    defaultConfig {
+        applicationId "life.league.challenge.kotlin"
+        minSdkVersion 26
+        targetSdk 35
+        compileSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    repositories { mavenCentral() }
+
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.1'
+    }
+
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+kotlin {
+    jvmToolchain(8)
+}
+
+// Feel free to add, remove or change dependencies as you see fit
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation platform("androidx.compose:compose-bom:2024.06.00")
+    implementation "androidx.compose.ui:ui"
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1'
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.4"
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'androidx.activity:activity-compose:1.10.0'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'io.coil-kt:coil-compose:2.0.0-rc01'
+    implementation 'androidx.datastore:datastore-preferences:1.0.0-alpha01'
+
+
+//    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.test:monitor:1.7.2'
+    // Required -- JUnit 4 framework
+    // Optional -- Mockito framework
+//    testImplementation 'org.mockito:mockito-core:5.7.0'
+
+
+    // JUnit for testing
+    testImplementation 'junit:junit:4.13.2'
+
+    // AndroidX Test - for ViewModel & LiveData testing
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+
+    // Coroutines Test Library
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+
+    // Mockito for mocking
+    testImplementation 'org.mockito:mockito-core:4.2.0'
+    testImplementation 'org.mockito:mockito-inline:4.2.0' // Required for mocking final classes
+
+    // Mockito-Kotlin extension for easier mocking
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:4.1.0'
+
+    // AndroidX Core Testing - Required for InstantTaskExecutorRule
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation 'androidx.compose.ui:ui-test-junit4-android:1.7.7'
+    testImplementation 'androidx.test:runner:1.6.2'
+
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.6.1')
+    androidTestImplementation('androidx.test:runner:1.6.2')
+    androidTestImplementation('androidx.test:rules:1.6.1')
+
+    testImplementation 'org.junit.platform:junit-platform-commons:1.8.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    androidTestImplementation platform('androidx.compose:compose-bom:2025.01.01')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+}
