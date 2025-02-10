@@ -57,6 +57,7 @@ class UserViewModel(val userRepository: UserRepository) : ViewModel() {
                 }
                 return@zip userPost
             }.catch { e ->
+                _uiState.value = UiState.Error(e.message.toString())
                 Log.v("UserPost", e.toString())
             }.flowOn(Dispatchers.IO)
                 .collect {
